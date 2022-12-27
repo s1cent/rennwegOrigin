@@ -1,0 +1,20 @@
+.shape img {width: 50%;
+  height: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 81px;
+  background-color: transparent;
+}
+
+.customContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "News News Sponsor"
+    "News News Sponsor";
+}
+.News { grid-area: News; }
+.Sponsor { grid-area: Sponsor; }

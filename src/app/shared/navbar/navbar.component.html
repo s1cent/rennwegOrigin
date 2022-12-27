@@ -1,0 +1,125 @@
+<nav id="navbar-main"
+     class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned">
+  <div class="container">
+    <a class="navbar-brand mr-lg-5" [routerLink]="['/home']">
+      <img style=" height: 53px;" src="assets/img/Rennweger_SV_1901.svg" alt="Rennweg Logo"/>
+      Rennweg SV
+    </a>
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed">
+      <div class="navbar-collapse-header" *ngIf="isMobile">
+        <div class="row">
+          <div class="col-6 collapse-brand">
+            <a [routerLink]="['/home']">
+              <img src="assets/img/Rennweger_SV_1901.svg" alt="Rennweg Logo"/>
+              Rennweg SV
+            </a>
+          </div>
+          <div class="col-6 collapse-close">
+            <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
+                    [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav ml-lg-auto navbar-nav-hover">
+        <li>
+          <div class="nav-link nav-link-icon" ngbDropdown #myDropMannschaft="ngbDropdown" style="width: 100%"
+               *ngIf="isMobile">
+            <button type="button" class="btn btn-outline-secondary btn-lg btn-block" id="mannschaft" ngbDropdownAnchor
+                    (focus)="myDropMannschaft.open()">
+              <i class="fa-solid fa-people-group"></i>
+              <span class="nav-link-inner--text">Mannschaft</span>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="mannschaft">
+              <button ngbDropdownItem [routerLink]="['/team', 1]">Kampfmannschaft</button>
+              <button ngbDropdownItem [routerLink]="['/team', 2]" >U23 / Reserve</button>
+              <button ngbDropdownItem [routerLink]="['/trainer']">Trainer</button>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="nav-link nav-link-icon" ngbDropdown #myDropVerein="ngbDropdown" style="width: 100%"
+               *ngIf="isMobile">
+            <button type="button" class="btn btn-outline-secondary btn-lg btn-block" id="verein" ngbDropdownAnchor
+                    (focus)="myDropVerein.open()">
+              <i class="fa-solid fa-people-group"></i>
+              <span class="nav-link-inner--text">Verein</span>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="verein">
+              <button ngbDropdownItem>Vereinschronik</button>
+              <button ngbDropdownItem>Vorstand</button>
+            </div>
+          </div>
+        </li>
+        <li class="navbar-nav ml-lg-auto"  style="margin: 0 0 17px 0;">
+          <button type="button" class="btn btn-outline-secondary btn-lg btn-block" (click)="null" *ngIf="isMobile">
+            <i class="fa-solid fa-circle-info"></i>
+            <span class="nav-link-inner--text">Informationen</span>
+          </button>
+        </li>
+        <li class="navbar-nav ml-lg-auto" style="margin: 0 0 17px 0;">
+          <button type="button" class="btn btn-outline-secondary btn-lg btn-block" (click)="null" *ngIf="isMobile">
+            <i class="fa-regular fa-money-bill-1"></i>
+            <span class="nav-link-inner--text">Sponsor</span>
+          </button>
+        </li>
+        <li class="navbar-nav ml-lg-auto" style="margin: 0 0 17px 0;">
+          <button type="button" class="btn btn-outline-secondary btn-lg btn-block" (click)="null" *ngIf="isMobile">
+            <i class="fa-regular fa-money-bill-1"></i>
+            <span class="nav-link-inner--text">Admin Login</span>
+          </button>
+        </li>
+        <!--!isMobile are lists that are only shown when its not on moblie-->
+        <li class="nav-item navbar-nav dropdown" *ngIf="!isMobile">
+          <a class="nav-link nav-link-icon" data-toggle="dropdown" role="button">
+            <i class="fa-solid fa-people-group"></i>
+            <span class="nav-link-inner--text">Mannschaft</span>
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['/team', 1]">Kampfmannschaft</a>
+            <a class="dropdown-item" [routerLink]="['/team', 2]">U23 / Reserve</a>
+            <a class="dropdown-item" [routerLink]="['/trainer']">Trainer</a>
+          </div>
+        </li>
+        <li class="nav-item navbar-nav dropdown" *ngIf="!isMobile">
+          <a class="nav-link nav-link-icon" data-toggle="dropdown" role="button">
+            <i class="fa-solid fa-futbol"></i>
+            <span class="nav-link-inner--text">Verein</span>
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item">Vereinschronik</a>
+            <a class="dropdown-item">Vorstand</a>
+          </div>
+        </li>
+        <li class="navbar-nav ml-lg-auto" *ngIf="!isMobile">
+          <a class="nav-link nav-link-icon" href="javascript:void(0)">
+            <i class="fa-solid fa-circle-info"></i>
+            <span class="nav-link-inner--text">Informationen</span>
+          </a>
+        </li>
+        <li class="navbar-nav ml-lg-auto" *ngIf="!isMobile">
+          <a class="nav-link nav-link-icon" href="javascript:void(0)">
+            <i class="fa-regular fa-money-bill-1"></i>
+            <span class="nav-link-inner--text">Sponsor</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="!isMobile">
+          <a class="nav-link nav-link-icon" href="javascript:void(0)" id="navbar-default_dropdown_1" role="button"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="ni ni-settings-gear-65"></i>
+            <span class="nav-link-inner--text d-lg-none">Settings</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1" *ngIf="!isMobile">
+            <a class="dropdown-item" href="javascript:void(0)">Admin Login</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

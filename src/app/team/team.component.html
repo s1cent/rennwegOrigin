@@ -1,0 +1,164 @@
+<main>
+  <div class="position-relative">
+    <section class="section section-lg section-shaped">
+      <div class="shape shape-style-1 shape-dark">
+      </div>
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+             xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 120 0 120"></polygon>
+        </svg>
+      </div>
+    </section>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="card card-profile shadow mt--150 m-3">
+        <div class="custom-tab-content flex-column flex-md-row">
+        <ul ngbNav #nav1="ngbNav" [(activeId)]="active" class="nav nav-pills justify-content-center" type="pills">
+          <li class="nav-item" [ngbNavItem]="2">
+            <a class="nav-link" ngbNavLink>
+              Trainingszeiten
+            </a>
+            <ng-template ngbNavContent>
+              <div class="tab-content">
+                <div class="table-responsive">
+                  <table class="timetable table table-striped ">
+                    <thead>
+                    <tr class="text-center">
+                      <th scope="col"></th>
+                      <th scope="col">Montag</th>
+                      <th scope="col">Dienstag</th>
+                      <th scope="col">Donnerstag</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr  class="text-center">
+                      <th scope="row">Zeiten</th>
+                      <td class="timetable-workout">Training
+                        <br> 20:00 - 21:30 </td>
+                      <td class="timetable-workout">Training
+                        <br> 20:00 - 21:30 </td>
+                      <td class="timetable-workout">Training
+                        <br> 20:00 - 21:30 </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </ng-template>
+          </li>
+          <li class="nav-item" [ngbNavItem]="1">
+            <a class="nav-link" ngbNavLink>
+              Wichtige Links!
+            </a>
+            <ng-template ngbNavContent>
+              <div class="tab-content text-center">
+               <a href="{{table}}"> Der derzeitige Tabellenstand</a>
+               <a href="https://vereine.oefb.at/RennwegerSV/Mannschaften/Saison-2022-23/KM/Spiele"> Die Spiele</a>
+              </div>
+            </ng-template>
+          </li>
+        </ul>
+      </div>
+        <div [ngbNavOutlet]="nav1" class="custom-tab-content"></div>
+      </div>
+
+      <div class="card card-profile shadow">
+        <h2 style="text-align: center" class="mt-3"> {{teamName}} </h2>
+        <div class="dropdown-divider"></div>
+        <ngb-accordion activeIds="ngb-panel-0">
+          <ngb-panel title="Tormann">
+            <ng-template ngbPanelContent>
+              <div class="row row-cols-1 row-cols-md-3 g-4 p-4">
+                <div class="col">
+                  <div class="card shadow h-100 mb-3 text-center">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                      <img class="img-fluid card-img" src="assets/img/avatar.svg" alt="First slide">
+                      <a href="#!">
+                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <h6 class="card-text">Max Mustermann</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card shadow h-100 mb-3 text-center">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                      <img class="img-fluid card-img" src="assets/img/avatar.svg" alt="First slide">
+                      <a href="#!">
+                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <h6 class="card-text">Max Mustermann</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card shadow h-100 mb-3 text-center">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                      <img class="img-fluid card-img" src="assets/img/avatar.svg" alt="First slide">
+                      <a href="#!">
+                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <h6 class="card-text">Max Mustermann</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card shadow h-100 mb-3 text-center">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                      <img class="img-fluid card-img" src="assets/img/avatar.svg" alt="First slide">
+                      <a href="#!">
+                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <h6 class="card-text">Max Mustermann</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </ng-template>
+          </ngb-panel>
+          <ngb-panel  title="Veteidigung">
+            <ng-template ngbPanelContent>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+              officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+              moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+              keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+              vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+              heard of them accusamus labore sustainable VHS.
+            </ng-template>
+          </ngb-panel>
+          <ngb-panel title="Mittelfeld">
+            <ng-template ngbPanelContent>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+              officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+              moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+              keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+              vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+              heard of them accusamus labore sustainable VHS.
+            </ng-template>
+          </ngb-panel>
+          <ngb-panel title="Sturm">
+            <ng-template ngbPanelContent>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+              officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+              moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+              keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+              vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+              heard of them accusamus labore sustainable VHS.
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+      </div>
+    </div>
+  </section>
+</main>
