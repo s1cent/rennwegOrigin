@@ -2,8 +2,11 @@ import { Component, OnInit, Inject, Renderer2, ElementRef, ViewChild, HostListen
 import { Router, NavigationEnd } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
-import { Subscription } from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {filter} from "rxjs/operators";
+import {GoogleSheetsDbService} from "ng-google-sheets-db";
+import {Test, testAttributesMapping} from "./test.model";
+import {environment} from "../environments/environment";
 var didScroll;
 var lastScrollTop = 0;
 var delta = 5;
@@ -17,7 +20,8 @@ var navbarHeight = 0;
 export class AppComponent {
   private _router: Subscription;
 
-  constructor( private renderer : Renderer2, private router: Router, @Inject(DOCUMENT,) private document: any, private element : ElementRef, public location: Location) {}
+  constructor( private renderer : Renderer2, private router: Router, @Inject(DOCUMENT,) private document: any, private element : ElementRef, public location: Location,
+               private googleSheetsDbService: GoogleSheetsDbService) {}
   @HostListener('window:scroll', ['$event'])
   hasScrolled() {
 
@@ -66,6 +70,7 @@ export class AppComponent {
       }
     }
   }
+  characters$: Observable<Test[]>;
 
   ngOnInit() {
     var navbar : HTMLElement = this.element.nativeElement.children[0].children[0];
@@ -88,5 +93,8 @@ export class AppComponent {
     });
     this.hasScrolled();
     this.onClick();
+
+    this.characters$ = this.googleSheetsDbService.get<Test>(environment.test.spreadsheetId, environment.test.worksheetName, testAttributesMapping);
+    console.log(this.characters$)
   }
 }

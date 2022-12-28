@@ -25,6 +25,7 @@
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.2",
     "ng-bootstrap": "^0.46.0",
+    "ng-google-sheets-db": "^2.0.0",
     "ngx-device-detector": "^4.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

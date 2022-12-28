@@ -11,7 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from "@angular/router";
 import { TeamComponent } from './team/team.component';
 import { TrainerComponent } from './trainer/trainer.component';
+import { HttpClientModule } from '@angular/common/http';
 
+import { API_KEY, GoogleSheetsDbService } from 'ng-google-sheets-db';
+import {environment} from "../environments/environment";
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,9 +29,15 @@ import { TrainerComponent } from './trainer/trainer.component';
     RouterModule,
     NgbModule,
     NgbAccordionModule,
-    NgbTooltipModule
+    NgbTooltipModule,
+    HttpClientModule
   ],
-  providers: [ MakeTemplatePropsRef ],
+  providers: [ MakeTemplatePropsRef,
+    {
+      provide: API_KEY,
+      useValue: environment.googleSheetsApiKey,
+    },
+    GoogleSheetsDbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

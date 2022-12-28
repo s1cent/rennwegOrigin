@@ -10,6 +10,14 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "https://s1cent.github.io/rennwegOrigin/",
+            "name": "Rennweger SV 1901",
+            "email": "rgoettfried@gmail.com"
+          }
+        },
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {

@@ -3,7 +3,7 @@
   <div class="container">
     <a class="navbar-brand mr-lg-5" [routerLink]="['/home']">
       <img style=" height: 53px;" src="assets/img/Rennweger_SV_1901.svg" alt="Rennweg Logo"/>
-      Rennweg SV
+      Rennweger SV 1901
     </a>
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
             [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
@@ -15,7 +15,7 @@
           <div class="col-6 collapse-brand">
             <a [routerLink]="['/home']">
               <img src="assets/img/Rennweger_SV_1901.svg" alt="Rennweg Logo"/>
-              Rennweg SV
+              Rennweger SV 1901
             </a>
           </div>
           <div class="col-6 collapse-close">
@@ -32,7 +32,7 @@
           <div class="nav-link nav-link-icon" ngbDropdown #myDropMannschaft="ngbDropdown" style="width: 100%"
                *ngIf="isMobile">
             <button type="button" class="btn btn-outline-secondary btn-lg btn-block" id="mannschaft" ngbDropdownAnchor
-                    (focus)="myDropMannschaft.open()">
+                    (click)="myDropMannschaft.open()">
               <i class="fa-solid fa-people-group"></i>
               <span class="nav-link-inner--text">Mannschaft</span>
             </button>
