@@ -67,7 +67,7 @@
           <ngb-panel title="Tormann">
             <ng-template ngbPanelContent>
               <div class="row row-cols-1 row-cols-md-3 g-4 p-2">
-                <div class="col-lg-3"  *ngFor="let tormann of team.goalies">
+                <div class="col-lg-3" style="display: flex; justify-content: center;"  *ngFor="let tormann of team.goalies">
                   <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
                     <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                       <img class="img-fluid card-img" [src]="tormann.pic === '-' ? 'assets/img/avatar.png' : tormann.pic" alt="First slide">
@@ -86,8 +86,8 @@
           <ngb-panel  title="Veteidigung">
             <ng-template ngbPanelContent>
             <div class="row row-cols-1 row-cols-md-3 g-4 p-2">
-              <div class="col-lg-3"  *ngFor="let defender of team.defenders">
-                <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
+              <div class="col-lg-3" style="display: flex; justify-content: center;" *ngFor="let defender of team.defenders">
+                <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px; ">
                   <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                     <img class="img-fluid card-img" [src]="defender.pic === '-' ? 'assets/img/avatar.png' : defender.pic" alt="First slide">
                     <a href="#!">
@@ -105,7 +105,7 @@
           <ngb-panel title="Mittelfeld">
             <ng-template ngbPanelContent>
               <div class="row row-cols-1 row-cols-md-3 g-4 p-2">
-                <div class="col-lg-3"  *ngFor="let midfielder of team.mittelfeld">
+                <div class="col-lg-3" style="display: flex; justify-content: center;"  *ngFor="let midfielder of team.mittelfeld">
                   <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
                     <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                       <img class="img-fluid card-img" [src]="midfielder.pic === '-' ? 'assets/img/avatar.png' : midfielder.pic" alt="First slide">
@@ -124,7 +124,7 @@
           <ngb-panel title="Sturm">
             <ng-template ngbPanelContent>
               <div class="row row-cols-1 row-cols-md-3 g-4 p-2">
-                <div class="col-lg-3"  *ngFor="let striker of team.sturm">
+                <div class="col-lg-3" style="display: flex; justify-content: center;"  *ngFor="let striker of team.sturm">
                   <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
                     <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                       <img class="img-fluid card-img" [src]="striker.pic === '-' ? 'assets/img/avatar.png' : striker.pic" alt="First slide">

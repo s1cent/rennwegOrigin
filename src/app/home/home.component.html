@@ -91,9 +91,9 @@
         <h2 style="text-align: center"> Latest News </h2>
         <div class="dropdown-divider"></div>
         <div class="row row-cols-1 row-cols-md-3 g-4 p-2" *ngIf=" (news$ | async) as _news; else loading">
-          <div class="col-lg-3"  *ngFor="let newNews of _news">
+          <div class="col-lg-3"  *ngFor="let newNews of _news" style="display: flex; justify-content: center;">
 
-            <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
+            <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px; cursor:pointer;" (click)="open(classic3,'' , '', newNews)">
               <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                 <img class="img-fluid card-img" [src]="newNews.pic === '-' ? 'assets/img/rennweg.png' : newNews.pic" alt="First slide">
                 <a href="#!">
@@ -103,8 +103,11 @@
               <div class="card-body">
                 <h5 class="card-title">{{newNews.title}}</h5>
                 <p class="card-text">
-                  {{newNews.text}}
+                  {{newNews.shortText}}
                 </p>
+              </div>
+              <div class="card-footer p-0">
+               <p><small> Klick hier! </small></p>
               </div>
             </div>
           </div>
@@ -118,5 +121,22 @@
 
 <ng-template #loading>
   Loading stuff...
+</ng-template>
+
+<ng-template #classic3 let-c="close" let-d="dismiss">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h6 class="modal-title" id="modal-title-default">{{news.title}}</h6>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div *ngIf="news.pic !== '-'">
+      <img class="img-fluid card-img" src="assets/img/rennweg.png" alt="First slide">
+    </div>
+    <div class="modal-body">
+      {{news.text}}
+    </div>
+  </div>
 </ng-template>
 
