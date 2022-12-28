@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Location, PopStateEvent } from '@angular/common';
 import {DeviceDetectorService} from "ngx-device-detector";
@@ -18,7 +18,16 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() :void {
-    this.isMobile = this.deviceService.isMobile();
+    if( this.deviceService.isMobile() == true)
+    {
+      this.isMobile = true;
+
+    }else if(document.body.clientWidth < 992){
+      this.isMobile = true;
+    }
+      else
+        this.isMobile = false;
+
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
       if (event instanceof NavigationStart) {
@@ -35,6 +44,12 @@ export class NavbarComponent implements OnInit {
     this.location.subscribe((ev:PopStateEvent) => {
       this.lastPoppedUrl = ev.url;
     });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.isMobile = event.target.innerWidth < 992;
+    console.log();
   }
 
 }

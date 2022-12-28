@@ -63,11 +63,13 @@
             <span class="nav-link-inner--text">Sponsor</span>
           </button>
         </li>
-        <li class="navbar-nav ml-lg-auto" style="margin: 0 0 17px 0;">
-          <button type="button" class="btn btn-outline-secondary btn-lg btn-block" (click)="null" *ngIf="isMobile">
-            <i class="fa-regular fa-money-bill-1"></i>
-            <span class="nav-link-inner--text">Admin Login</span>
-          </button>
+        <li class="navbar-nav ml-lg-auto text-center" style="margin: 0 0 17px 0;" *ngIf="isMobile">
+          <a class="nav-link nav-link-icon" href="https://www.facebook.com/RSV1901">
+            <i class="fa fa-facebook-square"></i>
+          </a>
+          <a class="nav-link nav-link-icon" href="https://www.instagram.com/rennweger_sv_1901/">
+            <i class="fa fa-instagram"></i>
+          </a>
         </li>
         <!--!isMobile are lists that are only shown when its not on moblie-->
         <li class="nav-item navbar-nav dropdown" *ngIf="!isMobile">
