@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Trainer, trainerAttributesMapping} from "../model/trainer.model";
+import {environment} from "../../environments/environment";
+import {Observable} from "rxjs";
+import {News, newsAttributesMapping} from "../model/news.model";
+import {GoogleSheetsDbService} from "ng-google-sheets-db";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +12,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  news$: Observable<News[]>;
+
+  constructor(private googleSheetsDbService: GoogleSheetsDbService) { }
 
   ngOnInit(): void {
+    this.news$ = this.googleSheetsDbService.get<News>(environment.news.spreadsheetId, environment.news.worksheetName, newsAttributesMapping);
+
   }
 
 }

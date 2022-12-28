@@ -15,7 +15,7 @@
   </div>
   <section class="section">
     <div class="container">
-      <div class="card card-profile shadow mt--150">
+      <div class="card card-profile shadow mt--150 ">
         <div class="row row-cols-1 row-cols-md-1 g-4 p-4" style="max-width: 540px; align-self: center;">
           <div class="col">
             <div class="card shadow text-center">
@@ -41,115 +41,69 @@
         <div class="dropdown-divider"></div>
         <div class="row row-cols-1 row-cols-md-1 g-4 p-4">
           <div class="col">
-            <div class="card shadow mb-3 text-center">
+            <div class="card shadow mb-3 text-center h-100">
 
-              <div class="bg-image hover-overlay ripple" style="min-width: 12em" data-mdb-ripple-color="light">
+              <div class="bg-image  hover-overlay ripple" style="min-width: 12em" data-mdb-ripple-color="light">
                 <img class="img-fluid card-img" src="assets/img/feld.jpg" alt="First slide">
                 <a href="#!">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                 </a>
               </div>
 
-              <div class="card-body">
-                <h5 class="card-title">Platz</h5>
+              <div class="card-body p-2">
+                <h5>Platz</h5>
                 <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the
-                  card's content.
+                  Grasbergergasse 15 <br>
+                  1030 Wien<br>
+                  <small><i class="fa-solid fa-phone"></i><a href="+436646209941"> +43 664/620 99 41</a></small>
+                  <br><small><i class="fa-solid fa-envelope"></i> <a href="office@rsv-1901.at"> office@rsv-1901.at</a></small>
                 </p>
-
-
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card shadow">
-              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+          <div class="col" >
+            <div class="card shadow text-center h-100">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" style="max-width: 250px; margin: auto; display: block;">
                 <img class="img-fluid card-img" src="assets/img/rennweg.png" alt="First slide">
-                <a href="#!">
-                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                </a>
               </div>
-              <div class="card-body">
-                <h5 class="card-title">Obmann</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the
-                  card's content.
-                </p>
+              <div class="card-body p-2">
+                <h5>Funktionäre</h5>
+                <div class="row">
+                  <div class="col" >
+                    <p class="card-text">
+                    Sabine Sturm<br>
+                    <small><i class="fa-solid fa-phone"></i><a href="+4369911239800"> +43 699/112 3 98 00</a></small>
+                    <br><small><i class="fa-solid fa-envelope"></i> <a href="sabine.sturm@polizei.gv.at"> sabine.sturm@polizei.gv.at</a></small>
+                    </p>
+                  </div>
+                  <div class="col" >
+                    <p class="card-text">
+                      Ronnie Müller<br>
+                      <small><i class="fa-solid fa-phone"></i><a href="+436646209941"> +43 664/620 99 41</a></small>
+                      <br><small><i class="fa-solid fa-envelope"></i> <a href="r.mueller@billa.at"> r.mueller@billa.at</a></small>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <h2 style="text-align: center"> Latest News </h2>
         <div class="dropdown-divider"></div>
-        <div class="row row-cols-1 row-cols-md-3 g-4 p-4">
-          <div class="col">
-            <div class="card shadow mb-3">
+        <div class="row row-cols-1 row-cols-md-3 g-4 p-2" *ngIf=" (news$ | async) as _news; else loading">
+          <div class="col-lg-3"  *ngFor="let newNews of _news">
 
+            <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
               <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img class="img-fluid card-img" src="assets/img/rennweg.png" alt="First slide">
-                <a href="#!">
-                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                </a>
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the
-                  card's content.
-                </p>
-
-
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow">
-              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img class="img-fluid card-img" src="assets/img/rennweg.png" alt="First slide">
+                <img class="img-fluid card-img" [src]="newNews.pic === '-' ? 'assets/img/rennweg.png' : newNews.pic" alt="First slide">
                 <a href="#!">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                 </a>
               </div>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{{newNews.title}}</h5>
                 <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the
-                  card's content.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow">
-              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img class="img-fluid card-img" src="assets/img/rennweg.png" alt="First slide">
-                <a href="#!">
-                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                </a>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the
-                  card's content.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow">
-              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img class="img-fluid card-img" src="assets/img/rennweg.png" alt="First slide">
-                <a href="#!">
-                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                </a>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the
-                  card's content.
+                  {{newNews.text}}
                 </p>
               </div>
             </div>
@@ -160,3 +114,9 @@
     </div>
   </section>
 </main>
+
+
+<ng-template #loading>
+  Loading stuff...
+</ng-template>
+

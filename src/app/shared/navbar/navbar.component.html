@@ -47,21 +47,15 @@
           <div class="nav-link nav-link-icon" ngbDropdown #myDropVerein="ngbDropdown" style="width: 100%"
                *ngIf="isMobile">
             <button type="button" class="btn btn-outline-secondary btn-lg btn-block" id="verein" ngbDropdownAnchor
-                    (focus)="myDropVerein.open()">
+                    (click)="myDropVerein.open()">
               <i class="fa-solid fa-people-group"></i>
               <span class="nav-link-inner--text">Verein</span>
             </button>
             <div ngbDropdownMenu aria-labelledby="verein">
-              <button ngbDropdownItem>Vereinschronik</button>
-              <button ngbDropdownItem>Vorstand</button>
+              <button ngbDropdownItem [routerLink]="['/chronik']">Vereinschronik</button>
+              <button ngbDropdownItem [routerLink]="['/vorstand']">Vorstand</button>
             </div>
           </div>
-        </li>
-        <li class="navbar-nav ml-lg-auto"  style="margin: 0 0 17px 0;">
-          <button type="button" class="btn btn-outline-secondary btn-lg btn-block" (click)="null" *ngIf="isMobile">
-            <i class="fa-solid fa-circle-info"></i>
-            <span class="nav-link-inner--text">Informationen</span>
-          </button>
         </li>
         <li class="navbar-nav ml-lg-auto" style="margin: 0 0 17px 0;">
           <button type="button" class="btn btn-outline-secondary btn-lg btn-block" (click)="null" *ngIf="isMobile">
@@ -93,31 +87,25 @@
             <span class="nav-link-inner--text">Verein</span>
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item">Vereinschronik</a>
-            <a class="dropdown-item">Vorstand</a>
+            <a class="dropdown-item" [routerLink]="['/chronik']">Vereinschronik</a>
+            <a class="dropdown-item" [routerLink]="['/vorstand']">Vorstand</a>
           </div>
-        </li>
-        <li class="navbar-nav ml-lg-auto" *ngIf="!isMobile">
-          <a class="nav-link nav-link-icon" href="javascript:void(0)">
-            <i class="fa-solid fa-circle-info"></i>
-            <span class="nav-link-inner--text">Informationen</span>
-          </a>
         </li>
         <li class="navbar-nav ml-lg-auto" *ngIf="!isMobile">
           <a class="nav-link nav-link-icon" href="javascript:void(0)">
             <i class="fa-regular fa-money-bill-1"></i>
-            <span class="nav-link-inner--text">Sponsor</span>
+            <span class="nav-link-inner--text">Sponsoren</span>
           </a>
         </li>
-        <li class="nav-item dropdown" *ngIf="!isMobile">
-          <a class="nav-link nav-link-icon" href="javascript:void(0)" id="navbar-default_dropdown_1" role="button"
-             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="ni ni-settings-gear-65"></i>
-            <span class="nav-link-inner--text d-lg-none">Settings</span>
+        <li class="nav-item" *ngIf="!isMobile">
+          <a class="nav-link nav-link-icon" href="https://www.facebook.com/RSV1901">
+            <i class="fa fa-facebook-square"></i>
           </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1" *ngIf="!isMobile">
-            <a class="dropdown-item" href="javascript:void(0)">Admin Login</a>
-          </div>
+        </li>
+        <li class="nav-item" *ngIf="!isMobile">
+          <a class="nav-link nav-link-icon" href="https://www.instagram.com/rennweger_sv_1901/">
+            <i class="fa fa-instagram"></i>
+          </a>
         </li>
       </ul>
     </div>

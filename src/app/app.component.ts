@@ -5,7 +5,7 @@ import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 import {Observable, Subscription} from 'rxjs';
 import {filter} from "rxjs/operators";
 import {GoogleSheetsDbService} from "ng-google-sheets-db";
-import {Test, testAttributesMapping} from "./test.model";
+import {Test, testAttributesMapping} from "./model/test.model";
 import {environment} from "../environments/environment";
 var didScroll;
 var lastScrollTop = 0;
@@ -95,6 +95,5 @@ export class AppComponent {
     this.onClick();
 
     this.characters$ = this.googleSheetsDbService.get<Test>(environment.test.spreadsheetId, environment.test.worksheetName, testAttributesMapping);
-    console.log(this.characters$)
   }
 }

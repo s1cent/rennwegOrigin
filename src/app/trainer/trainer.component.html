@@ -22,68 +22,21 @@
             <ngb-accordion activeIds="ngb-panel-0">
               <ngb-panel title="Kampfmannschaft">
                 <ng-template ngbPanelContent>
-                  <div class="row row-cols-1 row-cols-md-3 g-4 p-4">
-                    <div class="col">
-                      <div class="card shadow h-100 mb-3 text-center">
+                  <div class="row row-cols-1 row-cols-md-3 g-4 p-2" *ngIf=" (trainerKampf$ | async) as trainers; else loading">
+                    <div class="col-lg-3"  *ngFor="let trainer of trainers">
+
+                      <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                          <img class="img-fluid card-img" src="assets/img/avatar.svg" alt="First slide">
+                          <img class="img-fluid card-img" [src]="trainer.pic === '-' ? 'assets/img/avatar.svg' : trainer.pic" alt="First slide">
                           <a href="#!">
                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                           </a>
                         </div>
                         <div class="card-body" style="padding: 0.5em;">
-                          <h4 class="card-title"> Trainer </h4>
-                          <h6 class="card-text">Max Mustermann</h6>
-                          <p class="card-text"> <small><i class="fa-solid fa-phone"></i><a href="+43 123 / 1234567"> +43 123 / 1234567</a></small>
-                            <br><small><i class="fa-solid fa-envelope"></i> <a href="test@test.com"> test@test.com</a></small></p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="card shadow h-100 mb-3 text-center">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                          <img class="img-fluid card-img" src="assets/img/avatar.svg" alt="First slide">
-                          <a href="#!">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                          </a>
-                        </div>
-                        <div class="card-body" style="padding: 0.5em;">
-                          <h4 class="card-title"> CO-Trainer </h4>
-                          <h6 class="card-text">Max Mustermann</h6>
-                          <p class="card-text"> <small><i class="fa-solid fa-phone"></i><a href="+43 123 / 1234567"> +43 123 / 1234567</a></small>
-                            <br><small><i class="fa-solid fa-envelope"></i> <a href="test@test.com"> test@test.com</a></small></p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="card shadow h-100 mb-3 text-center">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                          <img class="img-fluid card-img" src="assets/img/avatar.svg" alt="First slide">
-                          <a href="#!">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                          </a>
-                        </div>
-                        <div class="card-body" style="padding: 0.5em;">
-                          <h4 class="card-title"> Tormann Trainer </h4>
-                          <h6 class="card-text">Max Mustermann</h6>
-                          <p class="card-text"> <small><i class="fa-solid fa-phone"></i><a href="+43 123 / 1234567"> +43 123 / 1234567</a></small>
-                            <br><small><i class="fa-solid fa-envelope"></i> <a href="test@test.com"> test@test.com</a></small></p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="card shadow h-100 mb-3 text-center">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                          <img class="img-fluid card-img" src="assets/img/avatar.svg" alt="First slide">
-                          <a href="#!">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                          </a>
-                        </div>
-                        <div class="card-body" style="padding: 0.5em;">
-                          <h4 class="card-title"> Masseur </h4>
-                          <h6 class="card-text">Max Mustermann</h6>
-                          <p class="card-text"> <small><i class="fa-solid fa-phone"></i><a href="+43 123 / 1234567"> +43 123 / 1234567</a></small>
-                            <br><small><i class="fa-solid fa-envelope"></i> <a href="test@test.com"> test@test.com</a></small></p>
+                          <h4 class="card-title"> {{trainer.title}} </h4>
+                          <h6 class="card-text">{{trainer.name}} {{trainer.nachName}}</h6>
+                          <p class="card-text"> <small><i class="fa-solid fa-phone"></i><a href="+{{trainer.telefonnummer}}"> +{{trainer.telefonnummer}}</a></small>
+                            <br><small><i class="fa-solid fa-envelope"></i> <a href="{{trainer.email}}"> {{trainer.email}}</a></small></p>
                         </div>
                       </div>
                     </div>
@@ -93,22 +46,50 @@
               </ngb-panel>
               <ngb-panel  title="U23 / Reserve">
                 <ng-template ngbPanelContent>
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
-                  officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
-                  moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
-                  keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-                  vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
-                  heard of them accusamus labore sustainable VHS.
+                  <div class="row row-cols-1 row-cols-md-3 g-4 p-2" *ngIf=" (trainerReserve$ | async) as trainers; else loading">
+                    <div class="col-lg-3"  *ngFor="let trainer of trainers">
+
+                      <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                          <img class="img-fluid card-img" [src]="trainer.pic === '-' ? 'assets/img/avatar.svg' : trainer.pic" alt="First slide">
+                          <a href="#!">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                          </a>
+                        </div>
+                        <div class="card-body" style="padding: 0.5em;">
+                          <h4 class="card-title"> {{trainer.title}} </h4>
+                          <h6 class="card-text">{{trainer.name}} {{trainer.nachName}}</h6>
+                          <p class="card-text"> <small><i class="fa-solid fa-phone"></i><a href="+{{trainer.telefonnummer}}"> +{{trainer.telefonnummer}}</a></small>
+                            <br><small><i class="fa-solid fa-envelope"></i> <a href="{{trainer.email}}"> {{trainer.email}}</a></small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </ng-template>
               </ngb-panel>
               <ngb-panel title="Jugend">
                 <ng-template ngbPanelContent>
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
-                  officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
-                  moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
-                  keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-                  vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
-                  heard of them accusamus labore sustainable VHS.
+                  <div class="row row-cols-1 row-cols-md-3 g-4 p-2" *ngIf=" (trainerJugend$ | async) as trainers; else loading">
+                    <div class="col-lg-3"  *ngFor="let trainer of trainers">
+
+                      <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                          <img class="img-fluid card-img" [src]="trainer.pic === '-' ? 'assets/img/avatar.svg' : trainer.pic" alt="First slide">
+                          <a href="#!">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                          </a>
+                        </div>
+                        <div class="card-body" style="padding: 0.5em;">
+                          <h4 class="card-title"> {{trainer.title}} </h4>
+                          <h6 class="card-text">{{trainer.name}} {{trainer.nachName}}</h6>
+                          <p class="card-text"> <small><i class="fa-solid fa-phone"></i><a href="+{{trainer.telefonnummer}}"> +{{trainer.telefonnummer}}</a></small>
+                            <br><small><i class="fa-solid fa-envelope"></i> <a href="{{trainer.email}}"> {{trainer.email}}</a></small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </ng-template>
               </ngb-panel>
             </ngb-accordion>
@@ -118,3 +99,8 @@
     </div>
   </section>
 </main>
+
+
+<ng-template #loading>
+  Loading stuff...
+</ng-template>

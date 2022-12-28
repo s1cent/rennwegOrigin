@@ -15,13 +15,19 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { API_KEY, GoogleSheetsDbService } from 'ng-google-sheets-db';
 import {environment} from "../environments/environment";
+import { ChronikComponent } from './chronik/chronik.component';
+import { VorstandComponent } from './vorstand/vorstand.component';
+import { SponsorComponent } from './sponsor/sponsor.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
     TeamComponent,
-    TrainerComponent
+    TrainerComponent,
+    ChronikComponent,
+    VorstandComponent,
+    SponsorComponent
   ],
   imports: [
     BrowserModule,
