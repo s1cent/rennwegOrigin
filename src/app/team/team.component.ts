@@ -65,11 +65,12 @@ export class TeamComponent {
       this.timesKampf$ =  this.id === 1 ?
         this.times$.pipe(map(zeiten => zeiten.filter(zeit => zeit.mannschaft == 'Kampfmannschaft'))) :
         this.times$.pipe(map(zeiten => zeiten.filter(zeit => zeit.mannschaft == 'Reserve')))
+
     })
   }
 
   getPic(pic: string, name:string) {
     console.log(pic + " - " + name)
-    return pic === '-' ? "assets/img/avatar.svg" : pic;
+    return pic === '-' ? "assets/img/avatar.png" : pic;
   }
 }

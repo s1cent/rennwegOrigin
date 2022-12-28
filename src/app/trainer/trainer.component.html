@@ -14,7 +14,8 @@
 
   <section class="section">
     <div class="container">
-      <div class="card card-profile shadow mt--150 m-3">
+      <div class="card card-profile shadow mt--150 m-3" *ngIf="{ trainers: trainerKampf$ | async, trainerRes: trainerReserve$ | async,
+       trainerJugend: trainerJugend$ | async} as team; else loading">
         <div class="custom-tab-content flex-column flex-md-row">
           <div class="card card-profile shadow">
             <h2 style="text-align: center" class="mt-3"> Unser Trainerteam </h2>
@@ -22,12 +23,12 @@
             <ngb-accordion activeIds="ngb-panel-0">
               <ngb-panel title="Kampfmannschaft">
                 <ng-template ngbPanelContent>
-                  <div class="row row-cols-1 row-cols-md-3 g-4 p-2" *ngIf=" (trainerKampf$ | async) as trainers; else loading">
-                    <div class="col-lg-3"  *ngFor="let trainer of trainers">
+                  <div class="row row-cols-1 row-cols-md-3 g-4 p-2">
+                    <div class="col-lg-3"  *ngFor="let trainer of team.trainers">
 
                       <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                          <img class="img-fluid card-img" [src]="trainer.pic === '-' ? 'assets/img/avatar.svg' : trainer.pic" alt="First slide">
+                          <img class="img-fluid card-img" [src]="trainer.pic === '-' ? 'assets/img/avatar.png' : trainer.pic" alt="First slide">
                           <a href="#!">
                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                           </a>
@@ -46,12 +47,12 @@
               </ngb-panel>
               <ngb-panel  title="U23 / Reserve">
                 <ng-template ngbPanelContent>
-                  <div class="row row-cols-1 row-cols-md-3 g-4 p-2" *ngIf=" (trainerReserve$ | async) as trainers; else loading">
-                    <div class="col-lg-3"  *ngFor="let trainer of trainers">
+                  <div class="row row-cols-1 row-cols-md-3 g-4 p-2">
+                    <div class="col-lg-3"  *ngFor="let trainer of  team.trainerRes">
 
                       <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                          <img class="img-fluid card-img" [src]="trainer.pic === '-' ? 'assets/img/avatar.svg' : trainer.pic" alt="First slide">
+                          <img class="img-fluid card-img" [src]="trainer.pic === '-' ? 'assets/img/avatar.png' : trainer.pic" alt="First slide">
                           <a href="#!">
                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                           </a>
@@ -70,12 +71,12 @@
               </ngb-panel>
               <ngb-panel title="Jugend">
                 <ng-template ngbPanelContent>
-                  <div class="row row-cols-1 row-cols-md-3 g-4 p-2" *ngIf=" (trainerJugend$ | async) as trainers; else loading">
-                    <div class="col-lg-3"  *ngFor="let trainer of trainers">
+                  <div class="row row-cols-1 row-cols-md-3 g-4 p-2">
+                    <div class="col-lg-3"  *ngFor="let trainer of team.trainerJugend">
 
                       <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                          <img class="img-fluid card-img" [src]="trainer.pic === '-' ? 'assets/img/avatar.svg' : trainer.pic" alt="First slide">
+                          <img class="img-fluid card-img" [src]="trainer.pic === '-' ? 'assets/img/avatar.png' : trainer.pic" alt="First slide">
                           <a href="#!">
                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                           </a>

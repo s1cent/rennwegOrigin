@@ -58,18 +58,19 @@
         <div [ngbNavOutlet]="nav1" class="custom-tab-content"></div>
       </div>
 
-      <div class="card card-profile shadow">
+      <div class="card card-profile shadow" *ngIf="{ goalies: torMann$ | async, defenders: verteidiger$ | async,
+       mittelfeld: mittelFeld$ | async, sturm: sturm$ | async} as team; else loading">
         <h2 style="text-align: center" class="mt-3"> {{teamName}} </h2>
         <div class="dropdown-divider"></div>
         <ngb-accordion activeIds="ngb-panel-0">
 
           <ngb-panel title="Tormann">
             <ng-template ngbPanelContent>
-              <div class="row row-cols-1 row-cols-md-3 g-4 p-2" *ngIf=" (torMann$ | async) as goalies; else loading">
-                <div class="col-lg-3"  *ngFor="let tormann of goalies">
+              <div class="row row-cols-1 row-cols-md-3 g-4 p-2">
+                <div class="col-lg-3"  *ngFor="let tormann of team.goalies">
                   <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
                     <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                      <img class="img-fluid card-img" [src]="tormann.pic === '-' ? 'assets/img/avatar.svg' : tormann.pic" alt="First slide">
+                      <img class="img-fluid card-img" [src]="tormann.pic === '-' ? 'assets/img/avatar.png' : tormann.pic" alt="First slide">
                       <a href="#!">
                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                       </a>
@@ -84,11 +85,11 @@
           </ngb-panel>
           <ngb-panel  title="Veteidigung">
             <ng-template ngbPanelContent>
-            <div class="row row-cols-1 row-cols-md-3 g-4 p-2" *ngIf=" (verteidiger$ | async) as defenders; else loading">
-              <div class="col-lg-3"  *ngFor="let defender of defenders">
+            <div class="row row-cols-1 row-cols-md-3 g-4 p-2">
+              <div class="col-lg-3"  *ngFor="let defender of team.defenders">
                 <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
                   <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img class="img-fluid card-img" [src]="defender.pic === '-' ? 'assets/img/avatar.svg' : defender.pic" alt="First slide">
+                    <img class="img-fluid card-img" [src]="defender.pic === '-' ? 'assets/img/avatar.png' : defender.pic" alt="First slide">
                     <a href="#!">
                       <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                     </a>
@@ -103,11 +104,11 @@
           </ngb-panel>
           <ngb-panel title="Mittelfeld">
             <ng-template ngbPanelContent>
-              <div class="row row-cols-1 row-cols-md-3 g-4 p-2" *ngIf=" (mittelFeld$ | async) as midfielders; else loading">
-                <div class="col-lg-3"  *ngFor="let midfielder of midfielders">
+              <div class="row row-cols-1 row-cols-md-3 g-4 p-2">
+                <div class="col-lg-3"  *ngFor="let midfielder of team.mittelfeld">
                   <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
                     <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                      <img class="img-fluid card-img" [src]="midfielder.pic === '-' ? 'assets/img/avatar.svg' : midfielder.pic" alt="First slide">
+                      <img class="img-fluid card-img" [src]="midfielder.pic === '-' ? 'assets/img/avatar.png' : midfielder.pic" alt="First slide">
                       <a href="#!">
                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                       </a>
@@ -122,11 +123,11 @@
           </ngb-panel>
           <ngb-panel title="Sturm">
             <ng-template ngbPanelContent>
-              <div class="row row-cols-1 row-cols-md-3 g-4 p-2" *ngIf=" (sturm$ | async) as strikers; else loading">
-                <div class="col-lg-3"  *ngFor="let striker of strikers">
+              <div class="row row-cols-1 row-cols-md-3 g-4 p-2">
+                <div class="col-lg-3"  *ngFor="let striker of team.sturm">
                   <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
                     <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                      <img class="img-fluid card-img" [src]="striker.pic === '-' ? 'assets/img/avatar.svg' : striker.pic" alt="First slide">
+                      <img class="img-fluid card-img" [src]="striker.pic === '-' ? 'assets/img/avatar.png' : striker.pic" alt="First slide">
                       <a href="#!">
                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                       </a>
