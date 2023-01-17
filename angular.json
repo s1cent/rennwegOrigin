@@ -13,7 +13,7 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "https://s1cent.github.io/rennwegOrigin/",
+            "baseHref": "http://rsv-1901.at/rennwegOrigin/",
             "name": "Rennweger SV 1901",
             "email": "rgoettfried@gmail.com"
           }
