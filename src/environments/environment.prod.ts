@@ -5,13 +5,13 @@ export const environment = {
     spreadsheetId: '1p2LonI1UixhdJNd_5gTis5PwNubRjcWx571vOtTo3Us',
     worksheetName: 'Test',
   },
-  kampfMannschaft: {
+  team: {
     spreadsheetId: '1p2LonI1UixhdJNd_5gTis5PwNubRjcWx571vOtTo3Us',
     worksheetName: 'Kampfmannschaft',
   },
   reserve: {
     spreadsheetId: '1p2LonI1UixhdJNd_5gTis5PwNubRjcWx571vOtTo3Us',
-    worksheetName: 'Reserve',
+    worksheetName: 'U23 / Reserve',
   },
   trainer: {
     spreadsheetId: '1p2LonI1UixhdJNd_5gTis5PwNubRjcWx571vOtTo3Us',
@@ -33,4 +33,12 @@ export const environment = {
     spreadsheetId: '1p2LonI1UixhdJNd_5gTis5PwNubRjcWx571vOtTo3Us',
     worksheetName: 'Vorstand',
   },
+  sponsor: {
+    spreadsheetId: '1p2LonI1UixhdJNd_5gTis5PwNubRjcWx571vOtTo3Us',
+    worksheetName: 'Sponsor',
+  },
+  teamName: {
+    spreadsheetId: '1p2LonI1UixhdJNd_5gTis5PwNubRjcWx571vOtTo3Us',
+    worksheetName: 'Teams',
+  }
 };

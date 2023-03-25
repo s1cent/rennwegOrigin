@@ -11,5 +11,8 @@
     <orderEntry type="library" name="jquery-1.8.3" level="application" />
     <orderEntry type="library" name="bootstrap-combined" level="application" />
     <orderEntry type="library" name="8c3825f208" level="application" />
+    <orderEntry type="library" name="primeicons" level="application" />
+    <orderEntry type="library" name="primeflex" level="application" />
+    <orderEntry type="library" name="quill" level="application" />
   </component>
 </module>

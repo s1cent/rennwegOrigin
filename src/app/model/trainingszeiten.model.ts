@@ -3,10 +3,7 @@ export const zeitenAttributesMapping = {
   mannschaft: 'Mannschaft',
   wochentag: 'Wochentag',
   zeit: 'Zeiten',
-  pic: 'Foto',
-  email: 'E-Mail',
-  telefonnummer: 'Telefonnummer',
-  titel: 'Titel'
+  typ:'Typ'
 };
 
 export interface Zeiten {
@@ -14,4 +11,5 @@ export interface Zeiten {
   mannschaft: string;
   wochentag: string;
   zeit: string;
+  typ: string;
 }

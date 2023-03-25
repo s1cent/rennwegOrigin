@@ -7,14 +7,16 @@ import {TrainerComponent} from "./trainer/trainer.component";
 import {ChronikComponent} from "./chronik/chronik.component";
 import {VorstandComponent} from "./vorstand/vorstand.component";
 import {SponsorComponent} from "./sponsor/sponsor.component";
+import {MitgliedComponent} from "./mitglied/mitglied.component";
 
 const routes: Routes =[
   { path: 'home',             component: HomeComponent },
-  { path: 'team/:id',             component: TeamComponent },
+  { path: 'team/:id/:name',             component: TeamComponent },
   { path: 'trainer',             component: TrainerComponent },
   { path: 'chronik',             component: ChronikComponent },
   { path: 'vorstand',             component: VorstandComponent },
   { path: 'sponsor',             component: SponsorComponent },
+  { path: 'mitglied',             component: MitgliedComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

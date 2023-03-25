@@ -28,6 +28,12 @@
         </div>
       </div>
       <ul class="navbar-nav ml-lg-auto navbar-nav-hover">
+        <li class="navbar-nav ml-lg-auto" style="margin: 0 0 17px 0;">
+          <button type="button" class="btn btn-outline-secondary btn-lg btn-block" (click)="null" *ngIf="isMobile">
+            <i class="fa-solid fa-users"></i>
+            <span class="nav-link-inner--text" [routerLink]="['/mitglied']">Werde Mitglied</span>
+          </button>
+        </li>
         <li>
           <div class="nav-link nav-link-icon" ngbDropdown #myDropMannschaft="ngbDropdown" style="width: 100%"
                *ngIf="isMobile">
@@ -37,8 +43,9 @@
               <span class="nav-link-inner--text">Mannschaft</span>
             </button>
             <div ngbDropdownMenu aria-labelledby="mannschaft">
-              <button ngbDropdownItem [routerLink]="['/team', 1]">Kampfmannschaft</button>
-              <button ngbDropdownItem [routerLink]="['/team', 2]" >U23 / Reserve</button>
+              <div *ngIf=" (teamNames | async) as _teamNames; else loading" >
+                <button ngbDropdownItem [routerLink]="['/team', _teamNames.id]">{{_teamNames.name}}</button>
+              </div>
               <button ngbDropdownItem [routerLink]="['/trainer']">Trainer</button>
             </div>
           </div>
@@ -72,14 +79,21 @@
           </a>
         </li>
         <!--!isMobile are lists that are only shown when its not on moblie-->
+        <li class="navbar-nav ml-lg-auto" *ngIf="!isMobile">
+          <a class="nav-link nav-link-icon" href="javascript:void(0)">
+            <i class="fa-solid fa-users"></i>
+            <span class="nav-link-inner--text" [routerLink]="['/mitglied']">Werde Mitglied</span>
+          </a>
+        </li>
         <li class="nav-item navbar-nav dropdown" *ngIf="!isMobile">
           <a class="nav-link nav-link-icon" data-toggle="dropdown" role="button">
             <i class="fa-solid fa-people-group"></i>
             <span class="nav-link-inner--text">Mannschaft</span>
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" [routerLink]="['/team', 1]">Kampfmannschaft</a>
-            <a class="dropdown-item" [routerLink]="['/team', 2]">U23 / Reserve</a>
+            <div *ngIf=" (teamNames | async) as _teamNames; else loading" >
+              <a  *ngFor="let team of _teamNames" ngbDropdownItem [routerLink]="['/team', team.id, team.name]">{{team.name}}</a>
+            </div>
             <a class="dropdown-item" [routerLink]="['/trainer']">Trainer</a>
           </div>
         </li>
@@ -113,3 +127,8 @@
     </div>
   </div>
 </nav>
+
+
+<ng-template #loading>
+</ng-template>
+

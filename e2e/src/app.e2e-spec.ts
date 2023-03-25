@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('make-hello-ng-template app is running!');
+    expect(page.getTitleText()).toEqual('rennweger-sv-1901 app is running!');
   });
 
   afterEach(async () => {

@@ -33,7 +33,7 @@
                     <tbody>
                     <tr  class="text-center">
                       <th scope="row">Zeiten</th>
-                      <td class="timetable-workout" *ngFor="let time of teamTimes">Training
+                      <td class="timetable-workout" *ngFor="let time of teamTimes">{{time.typ}}
                         <br> {{time.zeit}} </td>
                     </tr>
                     </tbody>
@@ -42,14 +42,14 @@
               </div>
             </ng-template>
           </li>
-          <li class="nav-item" [ngbNavItem]="1">
+          <li class="nav-item" [ngbNavItem]="1" *ngIf="kmOrRes === true">
             <a class="nav-link" ngbNavLink>
               Wichtige Links!
             </a>
             <ng-template ngbNavContent>
               <div class="tab-content text-center">
                <a href="{{table}}"> Der derzeitige Tabellenstand</a>
-               <a href="https://vereine.oefb.at/RennwegerSV/Mannschaften/Saison-2022-23/KM/Spiele"> Die Spiele</a>
+               <a href="{{games}}"> Die Spiele</a>
               </div>
             </ng-template>
           </li>
@@ -70,7 +70,7 @@
                 <div class="col-lg-3" style="display: flex; justify-content: center;"  *ngFor="let tormann of team.goalies">
                   <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
                     <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                      <img class="img-fluid card-img" [src]="tormann.pic === '-' ? 'assets/img/avatar.png' : tormann.pic" alt="First slide">
+                      <img class="img-fluid card-img" [src]="tormann.pic === '-' ? 'assets/img/avatar.png' : 'assets/img/' + tormann.id" alt="First slide">
                       <a href="#!">
                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                       </a>
@@ -89,7 +89,7 @@
               <div class="col-lg-3" style="display: flex; justify-content: center;" *ngFor="let defender of team.defenders">
                 <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px; ">
                   <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img class="img-fluid card-img" [src]="defender.pic === '-' ? 'assets/img/avatar.png' : defender.pic" alt="First slide">
+                    <iframe [src]="defender.pic === '-' ? 'assets/img/avatar.png' : defender.pic |safe: 'resourceUrl'"  allow="autoplay"></iframe>
                     <a href="#!">
                       <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                     </a>
@@ -127,7 +127,7 @@
                 <div class="col-lg-3" style="display: flex; justify-content: center;"  *ngFor="let striker of team.sturm">
                   <div class="card shadow h-100 mb-3 text-center" style="max-width: 200px;">
                     <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                      <img class="img-fluid card-img" [src]="striker.pic === '-' ? 'assets/img/avatar.png' : striker.pic" alt="First slide">
+                      <iframe [src]="striker.pic === '-' ? 'assets/img/avatar.png' : striker.pic" width="640" height="480" allow="autoplay"></iframe>
                       <a href="#!">
                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
                       </a>

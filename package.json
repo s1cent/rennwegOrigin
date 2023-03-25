@@ -1,5 +1,5 @@
 {
-  "name": "make-hello-ng-template",
+  "name": "rennweger-sv-1901",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -27,6 +27,8 @@
     "ng-bootstrap": "^0.46.0",
     "ng-google-sheets-db": "^2.0.0",
     "ngx-device-detector": "^4.0.1",
+    "primeicons": "^6.0.1",
+    "primeng": "^15.2.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "typeface-ibm-plex-sans": "^1.1.13",

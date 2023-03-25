@@ -37,6 +37,21 @@
             </div>
           </div>
         </div>
+        <p-carousel *ngIf=" (products | async) as _products; else loading" [value]="_products" [numVisible]="3" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions"
+                    [showIndicators]="false" [autoplayInterval]="3000">
+          <ng-template let-_products pTemplate="item">
+            <div class="product-item">
+              <div class="product-item-content">
+                <div class="mb-3">
+                  <img src="assets/img/{{ _products.image}}.png" style="aspect-ratio: 5/2; object-fit: contain;"  [alt]="_products.name" class="product-image" />
+                </div>
+                <div>
+                  <h4 class="mb-1">{{ _products.name }}</h4>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </p-carousel>
         <h2 style="text-align: center"> Wichtigeste Informationen</h2>
         <div class="dropdown-divider"></div>
         <div class="row row-cols-1 row-cols-md-1 g-4 p-4">
@@ -44,10 +59,11 @@
             <div class="card shadow mb-3 text-center h-100">
 
               <div class="bg-image  hover-overlay ripple" style="min-width: 12em" data-mdb-ripple-color="light">
-                <img class="img-fluid card-img" src="assets/img/feld.jpg" alt="First slide">
-                <a href="#!">
+                <video height="240" controls autoplay loop>
+                  <source src="assets/img/platz.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
-                </a>
               </div>
 
               <div class="card-body p-2">

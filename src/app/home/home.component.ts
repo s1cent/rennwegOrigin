@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {News, newsAttributesMapping} from "../model/news.model";
 import {GoogleSheetsDbService} from "ng-google-sheets-db";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {Sponsor, sponsorAttributesMapping} from "../model/sponsor.model";
 
 @Component({
   selector: 'app-home',
@@ -15,10 +16,30 @@ export class HomeComponent implements OnInit {
 
   news$: Observable<News[]>;
   closeResult: string;
+  responsiveOptions: any[];
   constructor(private googleSheetsDbService: GoogleSheetsDbService,private modalService: NgbModal) { }
+  products: Observable<Sponsor[]>;
 
   ngOnInit(): void {
     this.news$ = this.googleSheetsDbService.get<News>(environment.news.spreadsheetId, environment.news.worksheetName, newsAttributesMapping);
+    this.products = this.googleSheetsDbService.get<News>(environment.sponsor.spreadsheetId, environment.sponsor.worksheetName, sponsorAttributesMapping);
+    this.responsiveOptions = [
+      {
+        breakpoint: '1024px',
+        numVisible: 3,
+        numScroll: 3
+      },
+      {
+        breakpoint: '768px',
+        numVisible: 2,
+        numScroll: 2
+      },
+      {
+        breakpoint: '560px',
+        numVisible: 1,
+        numScroll: 1
+      }
+    ];
 
   }
   news:any;

@@ -23,6 +23,7 @@ export class TeamComponent {
   teamName: String;
   table: String;
   games: String;
+  kmOrRes: boolean;
 
   team$: Observable<Team[]>;
   torMann$: Observable<Team[]>;
@@ -38,33 +39,31 @@ export class TeamComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe(res => {
+      this.id = +res.id;
+      this.teamName = "Unsere " + res.name
+      this.kmOrRes = +res.id < 3;
+
       if (+res.id === 1){
-        this.id = +res.id;
-        this.teamName = "Unsere Kampfmannschaft"
         this.table = "https://vereine.oefb.at/RennwegerSV/Mannschaften/Saison-2022-23/KM/Tabellen"
         this.games = "https://vereine.oefb.at/RennwegerSV/Mannschaften/Saison-2022-23/KM/Spiele"
       }
-    else{
-        this.id = +res.id;
-        this.teamName = "Unsere U23 / Reserve"
+    else if (+res.id === 2){
         this.table = "https://vereine.oefb.at/RennwegerSV/Mannschaften/Saison-2022-23/Res/Tabellen"
         this.games = "https://vereine.oefb.at/RennwegerSV/Mannschaften/Saison-2022-23/Res/Spiele"
       }
 
-      this.team$ = this.id === 1 ?
-        this.googleSheetsDbService.get<Team>(environment.kampfMannschaft.spreadsheetId, environment.kampfMannschaft.worksheetName, teamAttributesMapping) :
-        this.googleSheetsDbService.get<Team>(environment.reserve.spreadsheetId, environment.reserve.worksheetName, teamAttributesMapping);
+      this.team$ =
+        this.googleSheetsDbService.get<Team>(environment.team.spreadsheetId, res.name, teamAttributesMapping)
 
-      this.times$ = this.googleSheetsDbService.get<Zeiten>(environment.kampfMannschaft.spreadsheetId, environment.zeiten.worksheetName, zeitenAttributesMapping)
+      this.times$ = this.googleSheetsDbService.get<Zeiten>(environment.team.spreadsheetId, environment.zeiten.worksheetName, zeitenAttributesMapping)
 
       this.torMann$ = this.team$.pipe(map(players => players.filter(player => player.position == 'Tormann')))
       this.verteidiger$ = this.team$.pipe(map(players => players.filter(player => player.position == 'Verteidiger')))
       this.mittelFeld$ = this.team$.pipe(map(players => players.filter(player => player.position == 'Mittelfeld')))
       this.sturm$ = this.team$.pipe(map(players => players.filter(player => player.position == 'Stürmer')))
 
-      this.timesKampf$ =  this.id === 1 ?
-        this.times$.pipe(map(zeiten => zeiten.filter(zeit => zeit.mannschaft == 'Kampfmannschaft'))) :
-        this.times$.pipe(map(zeiten => zeiten.filter(zeit => zeit.mannschaft == 'Reserve')))
+      this.timesKampf$ =
+        this.times$.pipe(map(zeiten => zeiten.filter(zeit => zeit.mannschaft == res.name )))
 
     })
   }
@@ -72,5 +71,13 @@ export class TeamComponent {
   getPic(pic: string, name:string) {
     console.log(pic + " - " + name)
     return pic === '-' ? "assets/img/avatar.png" : pic;
+  }
+
+  getTemPic(name) {
+    if('assets/img/' + name.id)
+    {
+
+    }
+    return name.pic === '-' ? 'assets/img/' + name.id : name.pic
   }
 }

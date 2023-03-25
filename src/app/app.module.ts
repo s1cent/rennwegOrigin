@@ -18,6 +18,12 @@ import {environment} from "../environments/environment";
 import { ChronikComponent } from './chronik/chronik.component';
 import { VorstandComponent } from './vorstand/vorstand.component';
 import { SponsorComponent } from './sponsor/sponsor.component';
+import {SafePipe} from "./team/safe.pipe";
+import { MitgliedComponent } from './mitglied/mitglied.component';
+import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
+import { TagModule } from 'primeng/tag';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +33,7 @@ import { SponsorComponent } from './sponsor/sponsor.component';
     TrainerComponent,
     ChronikComponent,
     VorstandComponent,
-    SponsorComponent
+    SponsorComponent, SafePipe, MitgliedComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,10 @@ import { SponsorComponent } from './sponsor/sponsor.component';
     NgbModule,
     NgbAccordionModule,
     NgbTooltipModule,
-    HttpClientModule
+    HttpClientModule,
+    CarouselModule,
+    ButtonModule,
+    TagModule
   ],
   providers: [ MakeTemplatePropsRef,
     {

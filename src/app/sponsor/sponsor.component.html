@@ -16,6 +16,28 @@
 <section class="section">
   <div class="container">
     <div class="card card-profile shadow mt--150 ">
+      <h3 class="mt-2" style="text-align: center;"> Unsere Sponsoren</h3>
+      <div class="dropdown-divider"></div>
+      <div class="row row-cols-1 row-cols-md-3 g-4 p-2 justify-content-center" *ngIf=" (products | async) as _products; else loading">
+        <div class="col-lg-3"  *ngFor="let produ of _products" style="display: flex; justify-content: center;">
+
+          <div class="card shadow h-100 mb-3 text-center">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="assets/img/{{ produ.image}}.png" style="width:100%; object-fit: contain;"  [alt]="produ.name" class="product-image" />
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{produ.name}}</h5>
+          </div>
+        </div>
+      </div>
+      </div>
+
     </div>
   </div>
 </section>
+
+<ng-template #loading>
+  Loading stuff...
+</ng-template>
+
