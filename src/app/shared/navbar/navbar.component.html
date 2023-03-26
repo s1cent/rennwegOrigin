@@ -44,7 +44,7 @@
             </button>
             <div ngbDropdownMenu aria-labelledby="mannschaft">
               <div *ngIf=" (teamNames | async) as _teamNames; else loading" >
-                <button ngbDropdownItem [routerLink]="['/team', _teamNames.id]">{{_teamNames.name}}</button>
+                <button  *ngFor="let team of _teamNames" ngbDropdownItem [routerLink]="['/team', team.id, team.name]">{{team.name}}</button>
               </div>
               <button ngbDropdownItem [routerLink]="['/trainer']">Trainer</button>
             </div>
